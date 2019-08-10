@@ -1,0 +1,22 @@
+{
+    "name": "jonmldr/parsed-yaml-validator",
+    "description": "",
+    "type": "library",
+    "require": {
+        "symfony/yaml": "^4.3"
+    },
+    "authors": [
+        {
+            "name": "jonmldr",
+            "email": "jonmldr@users.noreply.github.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ParsedYamlValidator\\": "src/"
+        }
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^4.3"
+    }
+}
