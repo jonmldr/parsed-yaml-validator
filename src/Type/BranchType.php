@@ -22,12 +22,12 @@ class BranchType implements TypeInterface
     private $description;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $min;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $max;
 
@@ -75,14 +75,29 @@ class BranchType implements TypeInterface
         return $this->name;
     }
 
-    public function isRequired(): bool
-    {
-        return $this->required;
-    }
-
     public function getFormats(): array
     {
         return $this->formats;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function getMin(): ?int
+    {
+        return $this->min;
+    }
+
+    public function getMax(): ?int
+    {
+        return $this->max;
+    }
+
+    public function isRequired(): bool
+    {
+        return $this->required;
     }
 
     public function getValidatorClass(): string

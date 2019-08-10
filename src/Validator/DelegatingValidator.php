@@ -47,7 +47,7 @@ class DelegatingValidator
 
             $ValidationErrors->addCollection($ValidationResult->getErrors());
 
-            // Remove the key from the "To-do list"
+            // Remove the key from the "To-do list".
             if (array_key_exists($type->getName(), $inputKeysToHandle)) {
                 unset($inputKeysToHandle[$type->getName()]);
             }

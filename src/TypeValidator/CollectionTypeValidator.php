@@ -40,7 +40,9 @@ class CollectionTypeValidator implements TypeValidatorInterface
         }
 
         // min()
-        if (count($inputValue) < $type->getMin()) {
+        $min = $type->getMin();
+
+        if ($min !== null && count($inputValue) < $min) {
             return new ValidationErrorResult(sprintf(
                 "Too few collection items for collection with key '%s', minimal %s items required",
                 $type->getName(),
@@ -49,7 +51,9 @@ class CollectionTypeValidator implements TypeValidatorInterface
         }
 
         // max()
-        if (count($inputValue) > $type->getMax()) {
+        $max = $type->getMax();
+
+        if ($max !== null && count($inputValue) > $max) {
             return new ValidationErrorResult(sprintf(
                 "Too many collection items for collection with key '%s', maximum %s items allowed",
                 $type->getName(),

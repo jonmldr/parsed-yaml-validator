@@ -22,12 +22,12 @@ class CollectionType implements TypeInterface
     private $types = [];
 
     /**
-     * @var int
+     * @var int|null
      */
     private $min;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $max;
 
@@ -98,12 +98,12 @@ class CollectionType implements TypeInterface
         return $this->types;
     }
 
-    public function getMin(): int
+    public function getMin(): ?int
     {
         return $this->min;
     }
 
-    public function getMax(): int
+    public function getMax(): ?int
     {
         return $this->max;
     }
