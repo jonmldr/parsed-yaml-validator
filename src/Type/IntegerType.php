@@ -2,7 +2,7 @@
 
 namespace ParsedYamlValidator\Type;
 
-use ParsedYamlValidator\Validator\TypeValidator\IntegerTypeValidator;
+use ParsedYamlValidator\TypeValidator\IntegerTypeValidator;
 
 class IntegerType implements TypeInterface
 {

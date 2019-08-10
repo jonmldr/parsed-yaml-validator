@@ -1,27 +1,27 @@
 <?php
 
-namespace ParsedYamlValidator\Validator\TypeValidator;
+namespace ParsedYamlValidator\TypeValidator;
 
 use ParsedYamlValidator\Exception\InvalidTypeException;
 use ParsedYamlValidator\Result\ValidationErrorResult;
 use ParsedYamlValidator\Result\ValidationResult;
 use ParsedYamlValidator\Result\ValidationSuccessResult;
-use ParsedYamlValidator\Type\IntegerType;
+use ParsedYamlValidator\Type\DecimalType;
 use ParsedYamlValidator\Type\TypeInterface;
 
-class IntegerTypeValidator implements TypeValidatorInterface
+class DecimalTypeValidator implements TypeValidatorInterface
 {
     public function validate(TypeInterface $type, $inputKey, $inputValue): ValidationResult
     {
-        if (!$type instanceof IntegerType) {
-            throw new InvalidTypeException(sprintf("Expected type of instance '%s', instance of '%s' given.", IntegerType::class, get_class($type)));
+        if (!$type instanceof DecimalType) {
+            throw new InvalidTypeException(sprintf("Expected type of instance '%s', instance of '%s' given.", DecimalType::class, get_class($type)));
         }
 
         // require()
         if ($inputKey === null || $inputValue === null) {
             if ($type->isRequired() === true) {
                 return new ValidationErrorResult([sprintf(
-                    "Integer with key '%s' is required but does not exists",
+                    "Decimal with key '%s' is required but does not exists",
                     $type->getName(),
                 )]);
             }
@@ -30,9 +30,9 @@ class IntegerTypeValidator implements TypeValidatorInterface
         }
 
         // DecimalType: check if value is a decimal
-        if (is_int($inputValue) === false) {
+        if (is_float($inputValue) === false && is_int($inputValue) === false) {
             return new ValidationErrorResult([sprintf(
-                "Value with key '%s' must be a integer, %s given",
+                "Value with key '%s' must be a decimal, %s given",
                 $type->getName(),
                 gettype($inputValue),
             )]);

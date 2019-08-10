@@ -2,7 +2,7 @@
 
 namespace ParsedYamlValidator\Type;
 
-use ParsedYamlValidator\Validator\TypeValidator\StrategyTypeValidator;
+use ParsedYamlValidator\TypeValidator\StrategyTypeValidator;
 
 class StrategyType implements TypeInterface
 {

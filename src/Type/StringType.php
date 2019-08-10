@@ -2,7 +2,7 @@
 
 namespace ParsedYamlValidator\Type;
 
-use ParsedYamlValidator\Validator\TypeValidator\StringTypeValidator;
+use ParsedYamlValidator\TypeValidator\StringTypeValidator;
 
 class StringType implements TypeInterface
 {

@@ -1,27 +1,27 @@
 <?php
 
-namespace ParsedYamlValidator\Validator\TypeValidator;
+namespace ParsedYamlValidator\TypeValidator;
 
 use ParsedYamlValidator\Exception\InvalidTypeException;
 use ParsedYamlValidator\Result\ValidationErrorResult;
+use ParsedYamlValidator\Type\BooleanType;
+use ParsedYamlValidator\Type\TypeInterface;
 use ParsedYamlValidator\Result\ValidationResult;
 use ParsedYamlValidator\Result\ValidationSuccessResult;
-use ParsedYamlValidator\Type\DecimalType;
-use ParsedYamlValidator\Type\TypeInterface;
 
-class DecimalTypeValidator implements TypeValidatorInterface
+class BooleanTypeValidator implements TypeValidatorInterface
 {
     public function validate(TypeInterface $type, $inputKey, $inputValue): ValidationResult
     {
-        if (!$type instanceof DecimalType) {
-            throw new InvalidTypeException(sprintf("Expected type of instance '%s', instance of '%s' given.", DecimalType::class, get_class($type)));
+        if (!$type instanceof BooleanType) {
+            throw new InvalidTypeException(sprintf("Expected type of instance '%s', instance of '%s' given.", BooleanType::class, get_class($type)));
         }
 
         // require()
         if ($inputKey === null || $inputValue === null) {
             if ($type->isRequired() === true) {
                 return new ValidationErrorResult([sprintf(
-                    "Decimal with key '%s' is required but does not exists",
+                    "Boolean with key '%s' is required but does not exists",
                     $type->getName(),
                 )]);
             }
@@ -29,10 +29,10 @@ class DecimalTypeValidator implements TypeValidatorInterface
             return new ValidationSuccessResult();
         }
 
-        // DecimalType: check if value is a decimal
-        if (is_float($inputValue) === false && is_int($inputValue) === false) {
+        // BooleanType: check if value is a boolean
+        if (is_bool($inputValue) === false) {
             return new ValidationErrorResult([sprintf(
-                "Value with key '%s' must be a decimal, %s given",
+                "Value with key '%s' must be a boolean, %s given",
                 $type->getName(),
                 gettype($inputValue),
             )]);

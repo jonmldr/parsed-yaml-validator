@@ -1,6 +1,6 @@
 <?php
 
-namespace ParsedYamlValidator\Validator\TypeValidator;
+namespace ParsedYamlValidator\TypeValidator;
 
 use ParsedYamlValidator\Result\ValidationResult;
 use ParsedYamlValidator\Type\TypeInterface;

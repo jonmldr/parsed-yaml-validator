@@ -9,7 +9,7 @@ use ParsedYamlValidator\Result\ValidationResult;
 use ParsedYamlValidator\Result\ValidationSuccessResult;
 use ParsedYamlValidator\Type\TypeInterface;
 use ParsedYamlValidator\ValidationError\ValidationErrorBag;
-use ParsedYamlValidator\Validator\TypeValidator\TypeValidatorInterface;
+use ParsedYamlValidator\TypeValidator\TypeValidatorInterface;
 
 class DelegatingValidator
 {

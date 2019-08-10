@@ -2,7 +2,7 @@
 
 namespace ParsedYamlValidator\Type;
 
-use ParsedYamlValidator\Validator\TypeValidator\BranchTypeValidator;
+use ParsedYamlValidator\TypeValidator\BranchTypeValidator;
 
 class BranchType implements TypeInterface
 {

@@ -2,7 +2,7 @@
 
 namespace ParsedYamlValidator\Type;
 
-use ParsedYamlValidator\Validator\TypeValidator\CollectionTypeValidator;
+use ParsedYamlValidator\TypeValidator\CollectionTypeValidator;
 
 class CollectionType implements TypeInterface
 {
