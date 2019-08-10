@@ -4,8 +4,8 @@ namespace ParsedYamlValidator\Result;
 
 class ValidationErrorResult extends ValidationResult
 {
-    public function __construct(array $messages)
+    public function __construct($errors)
     {
-        parent::__construct(false, $messages);
+        parent::__construct(false, $errors);
     }
 }

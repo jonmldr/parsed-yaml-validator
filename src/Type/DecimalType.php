@@ -2,7 +2,7 @@
 
 namespace ParsedYamlValidator\Type;
 
-use ParsedYamlValidator\TypeValidator\DecimalTypeValidator;
+use ParsedYamlValidator\Validator\TypeValidator\DecimalTypeValidator;
 
 class DecimalType implements TypeInterface
 {

@@ -2,7 +2,7 @@
 
 namespace ParsedYamlValidator\Type;
 
-use ParsedYamlValidator\TypeValidator\StrategyTypeValidator;
+use ParsedYamlValidator\Validator\TypeValidator\StrategyTypeValidator;
 
 class StrategyType implements TypeInterface
 {
@@ -22,13 +22,19 @@ class StrategyType implements TypeInterface
     private $max;
 
     /**
+     * @var array
+     */
+    private $formats;
+
+    /**
      * @var bool
      */
     private $required = false;
 
-    public function __construct(string $name)
+    public function __construct(string $name, array $formats)
     {
         $this->name = $name;
+        $this->formats = $formats;
     }
 
     public function min(int $min): self
@@ -52,13 +58,28 @@ class StrategyType implements TypeInterface
         return $this;
     }
 
-    public function getValidatorClass(): string
-    {
-        return StrategyTypeValidator::class;
-    }
-
     public function getName(): string
     {
         return $this->name;
+    }
+
+    public function getMin(): int
+    {
+        return $this->min;
+    }
+
+    public function getMax(): int
+    {
+        return $this->max;
+    }
+
+    public function getFormats(): array
+    {
+        return $this->formats;
+    }
+
+    public function getValidatorClass(): string
+    {
+        return StrategyTypeValidator::class;
     }
 }

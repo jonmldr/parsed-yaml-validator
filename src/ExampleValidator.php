@@ -2,6 +2,9 @@
 
 namespace ParsedYamlValidator;
 
+use ParsedYamlValidator\Validator\AbstractValidator;
+use ParsedYamlValidator\Validator\ValidatorInterface;
+
 class ExampleValidator extends AbstractValidator implements ValidatorInterface
 {
     public function describe(): array
@@ -64,7 +67,8 @@ class ExampleValidator extends AbstractValidator implements ValidatorInterface
 
                     $this->boolean('autowire'),
                 ])
-                ->description('describes an service definition'),
+                ->description('describes an service definition')
+                ->required(),
 
             $this
                 ->strategy('services', [

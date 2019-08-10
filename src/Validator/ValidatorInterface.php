@@ -1,6 +1,6 @@
 <?php
 
-namespace ParsedYamlValidator;
+namespace ParsedYamlValidator\Validator;
 
 interface ValidatorInterface
 {

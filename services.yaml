@@ -16,6 +16,9 @@ testCollection:
   - true
   - 123.123
 
+testBranch:
+  class: 23
+
 services:
   App\Controller:
     resource: '../src/Controller/*'

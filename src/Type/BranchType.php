@@ -2,7 +2,7 @@
 
 namespace ParsedYamlValidator\Type;
 
-use ParsedYamlValidator\TypeValidator\BranchTypeValidator;
+use ParsedYamlValidator\Validator\TypeValidator\BranchTypeValidator;
 
 class BranchType implements TypeInterface
 {
@@ -73,6 +73,11 @@ class BranchType implements TypeInterface
     public function getName(): string
     {
         return $this->name;
+    }
+
+    public function isRequired(): bool
+    {
+        return $this->required;
     }
 
     public function getFormats(): array

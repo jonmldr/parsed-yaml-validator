@@ -1,6 +1,6 @@
 <?php
 
-namespace ParsedYamlValidator;
+namespace ParsedYamlValidator\Validator;
 
 use ParsedYamlValidator\Result\ValidationResult;
 use ParsedYamlValidator\Type\BooleanType;
@@ -29,10 +29,7 @@ abstract class AbstractValidator
 
     public function validate(array $input): ValidationResult
     {
-        return ValidatorEngine::validate(
-            $input,
-            $this->describe()
-        );
+        return DelegatingValidator::delegate($input, $this->describe());
     }
 
     /**
@@ -68,9 +65,9 @@ abstract class AbstractValidator
         return new IntegerType($name);
     }
 
-    public function strategy(string $name): StrategyType
+    public function strategy(string $name, array $formats = []): StrategyType
     {
-        return new StrategyType($name);
+        return new StrategyType($name, $formats);
     }
 
     protected function string(string $name): StringType

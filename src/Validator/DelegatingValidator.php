@@ -1,21 +1,22 @@
 <?php
 
-namespace ParsedYamlValidator;
+namespace ParsedYamlValidator\Validator;
 
 use ParsedYamlValidator\Exception\InvalidTypeException;
 use ParsedYamlValidator\Exception\InvalidTypeValidatorException;
 use ParsedYamlValidator\Result\ValidationErrorResult;
 use ParsedYamlValidator\Result\ValidationResult;
 use ParsedYamlValidator\Result\ValidationSuccessResult;
-use ParsedYamlValidator\Result\ValidationTypeErrorResult;
 use ParsedYamlValidator\Type\TypeInterface;
-use ParsedYamlValidator\TypeValidator\TypeValidatorInterface;
+use ParsedYamlValidator\ValidationError\ValidationErrorBag;
+use ParsedYamlValidator\Validator\TypeValidator\TypeValidatorInterface;
 
-class ValidatorEngine
+class DelegatingValidator
 {
-    public static function validate(array $input, array $types): ValidationResult
+    public static function delegate(array $input, array $types): ValidationResult
     {
-        $validationMessages = [];
+        $ValidationErrors = new ValidationErrorBag();
+
         $inputKeysToHandle = array_keys($input);
 
         foreach ($types as $type) {
@@ -42,10 +43,10 @@ class ValidatorEngine
             }
 
             // Call the validator & handle the output.
-            $validationTypeResult = $validator->validate($type, $inputKey, $inputValue);
+            $ValidationResult = $validator->validate($type, $inputKey, $inputValue);
 
-            if ($validationTypeResult instanceof ValidationTypeErrorResult) {
-                $validationMessages[] = $validationTypeResult->getMessage();
+            if ($ValidationResult instanceof ValidationErrorResult) {
+                $ValidationErrors->addCollection($ValidationResult->getErrors());
             }
 
             // Remove the key from the "To-do list"
@@ -54,8 +55,8 @@ class ValidatorEngine
             }
         }
 
-        if (count($validationMessages) > 0) {
-            return new ValidationErrorResult($validationMessages);
+        if (count($ValidationErrors) > 0) {
+            return new ValidationErrorResult($ValidationErrors);
         }
 
         return new ValidationSuccessResult();

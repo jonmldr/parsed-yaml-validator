@@ -2,7 +2,7 @@
 
 namespace ParsedYamlValidator\Type;
 
-use ParsedYamlValidator\TypeValidator\BooleanTypeValidator;
+use ParsedYamlValidator\Validator\TypeValidator\BooleanTypeValidator;
 
 class BooleanType implements TypeInterface
 {
