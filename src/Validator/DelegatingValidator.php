@@ -20,6 +20,24 @@ class DelegatingValidator
 
         $inputKeysToHandle = array_keys($input);
 
+        $availableKeys = array_map(function (TypeInterface $type) {
+            return $type->getName();
+        }, $types);
+
+        // Create errors for the undefined keys.
+        foreach ($inputKeysToHandle as $key) {
+            if (in_array($key, $availableKeys, true) === false) {
+                $error = new ValidationError(sprintf(
+                    "Invalid option '%s', the available options are: %s",
+                    $key,
+                    implode(', ', $availableKeys),
+                ));
+
+                $validationErrors->add($error);
+            }
+        }
+
+        // Handle types.
         foreach ($types as $type) {
 
             if (!$type instanceof TypeInterface) {
@@ -52,17 +70,6 @@ class DelegatingValidator
             if (($key = array_search($type->getName(), $inputKeysToHandle, true)) !== false) {
                 unset($inputKeysToHandle[$key]);
             }
-        }
-
-        // Create errors for the undefined keys.
-        foreach ($inputKeysToHandle as $inputKey) {
-            $error = new ValidationError(sprintf(
-                "Invalid option '%s', the available options are: %s",
-                $inputKey,
-                implode(', ', array_keys($input)),
-            ));
-
-            $validationErrors->add($error);
         }
 
         if (count($validationErrors) > 0) {
