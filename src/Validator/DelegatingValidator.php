@@ -45,9 +45,7 @@ class DelegatingValidator
             // Call the validator & handle the output.
             $ValidationResult = $validator->validate($type, $inputKey, $inputValue);
 
-            if ($ValidationResult instanceof ValidationErrorResult) {
-                $ValidationErrors->addCollection($ValidationResult->getErrors());
-            }
+            $ValidationErrors->addCollection($ValidationResult->getErrors());
 
             // Remove the key from the "To-do list"
             if (array_key_exists($type->getName(), $inputKeysToHandle)) {
