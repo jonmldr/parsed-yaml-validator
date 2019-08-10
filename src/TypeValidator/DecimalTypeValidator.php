@@ -20,10 +20,10 @@ class DecimalTypeValidator implements TypeValidatorInterface
         // require()
         if ($inputKey === null || $inputValue === null) {
             if ($type->isRequired() === true) {
-                return new ValidationErrorResult([sprintf(
+                return new ValidationErrorResult(sprintf(
                     "Decimal with key '%s' is required but does not exists",
                     $type->getName(),
-                )]);
+                ));
             }
 
             return new ValidationSuccessResult();
@@ -31,11 +31,11 @@ class DecimalTypeValidator implements TypeValidatorInterface
 
         // DecimalType: check if value is a decimal
         if (is_float($inputValue) === false && is_int($inputValue) === false) {
-            return new ValidationErrorResult([sprintf(
+            return new ValidationErrorResult(sprintf(
                 "Value with key '%s' must be a decimal, %s given",
                 $type->getName(),
                 gettype($inputValue),
-            )]);
+            ));
         }
 
         return new ValidationSuccessResult();

@@ -20,10 +20,10 @@ class StringTypeValidator implements TypeValidatorInterface
         // require()
         if ($inputKey === null || $inputValue === null) {
             if ($type->isRequired() === true) {
-                return new ValidationErrorResult([sprintf(
+                return new ValidationErrorResult(sprintf(
                     "String with key '%s' is required but does not exists",
                     $type->getName(),
-                )]);
+                ));
             }
 
             return new ValidationSuccessResult();
@@ -31,19 +31,19 @@ class StringTypeValidator implements TypeValidatorInterface
 
         // StringType: check if value is a string
         if (is_string($inputValue) === false) {
-            return new ValidationErrorResult([sprintf(
+            return new ValidationErrorResult(sprintf(
                 "Value with key '%s' must be a string, %s given",
                 $type->getName(),
                 gettype($inputValue),
-            )]);
+            ));
         }
 
         // notEmpty()
         if (empty($inputValue) === true && $type->isNotEmpty() === true) {
-            return new ValidationErrorResult([sprintf(
+            return new ValidationErrorResult(sprintf(
                 "String with key '%s' is has an empty value",
                 $inputKey,
-            )]);
+            ));
         }
 
         return new ValidationSuccessResult();

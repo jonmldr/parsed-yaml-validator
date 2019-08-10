@@ -21,10 +21,10 @@ class BranchTypeValidator implements TypeValidatorInterface
         // require()
         if ($inputKey === null || $inputValue === null) {
             if ($type->isRequired() === true) {
-                return new ValidationErrorResult([sprintf(
+                return new ValidationErrorResult(sprintf(
                     "Branch with key '%s' is required but does not exists",
                     $type->getName(),
-                )]);
+                ));
             }
 
             return new ValidationSuccessResult();
@@ -32,11 +32,11 @@ class BranchTypeValidator implements TypeValidatorInterface
 
         // BranchType: check if value is an array
         if (is_array($inputValue) === false) {
-            return new ValidationErrorResult([sprintf(
+            return new ValidationErrorResult(sprintf(
                 "Value with key '%s' must be a collection, %s given",
                 $type->getName(),
                 gettype($inputValue),
-            )]);
+            ));
         }
 
         $ValidationErrors = DelegatingValidator::delegate($inputValue, $type->getFormats());

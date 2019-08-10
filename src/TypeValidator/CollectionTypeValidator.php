@@ -21,10 +21,10 @@ class CollectionTypeValidator implements TypeValidatorInterface
         // require()
         if ($inputKey === null || $inputValue === null) {
             if ($type->isRequired() === true) {
-                return new ValidationErrorResult([sprintf(
+                return new ValidationErrorResult(sprintf(
                     "Collection with key '%s' is required but does not exists",
                     $type->getName(),
-                )]);
+                ));
             }
 
             return new ValidationSuccessResult();
@@ -32,29 +32,29 @@ class CollectionTypeValidator implements TypeValidatorInterface
 
         // CollectionType: check if value is an array
         if (is_array($inputValue) === false) {
-            return new ValidationErrorResult([sprintf(
+            return new ValidationErrorResult(sprintf(
                 "Value with key '%s' must be a collection, %s given",
                 $type->getName(),
                 gettype($inputValue),
-            )]);
+            ));
         }
 
         // min()
         if (count($inputValue) < $type->getMin()) {
-            return new ValidationErrorResult([sprintf(
+            return new ValidationErrorResult(sprintf(
                 "Too few collection items for collection with key '%s', minimal %s items required",
                 $type->getName(),
                 $type->getMin(),
-            )]);
+            ));
         }
 
         // max()
         if (count($inputValue) > $type->getMax()) {
-            return new ValidationErrorResult([sprintf(
+            return new ValidationErrorResult(sprintf(
                 "Too many collection items for collection with key '%s', maximum %s items allowed",
                 $type->getName(),
                 $type->getMax(),
-            )]);
+            ));
         }
 
         // types() && type()
@@ -62,11 +62,11 @@ class CollectionTypeValidator implements TypeValidatorInterface
             $collectionItemType = gettype($collectionItem);
 
             if (in_array($collectionItemType, $type->getTypes(), true) === false) {
-                return new ValidationErrorResult([sprintf(
+                return new ValidationErrorResult(sprintf(
                     'Invalid collection type %s, expected %s',
                     $collectionItemType,
                     implode(', ', $type->getTypes()),
-                )]);
+                ));
             }
         }
 

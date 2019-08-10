@@ -17,7 +17,7 @@ testCollection:
   - 123.123
 
 testBranch:
-  class: 23
+  class: 'test'
 
 services:
   App\Controller:
