@@ -1,0 +1,32 @@
+parameters:
+  cache_dir: '../var/cache'
+  templates_dir: '../templates'
+
+testBool: true
+
+testString: '23'
+
+testDecimal: 123.23
+
+testInteger: 123
+
+testCollection:
+  - 123
+  - asd
+  - true
+  - 123.123
+
+services:
+  App\Controller:
+    resource: '../src/Controller/*'
+    tags: ['controller']
+
+  App\Manager\EntityManagerInterface: '@entity_manager'
+
+  entity_manager:
+    class: App\Manager\EntityManager
+    autowire: true
+
+  mailer_service:
+    class: App\Service\MailerService
+    arguments: ['@entity_manager', 'SMTP']
