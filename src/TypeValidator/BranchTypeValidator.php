@@ -38,7 +38,7 @@ class BranchTypeValidator implements TypeValidatorInterface
                 "Too few collection items for collection with key '%s', minimal %s items required",
                 $type->getName(),
                 $type->getMin(),
-                ));
+            ));
         }
 
         // max()
@@ -49,7 +49,7 @@ class BranchTypeValidator implements TypeValidatorInterface
                 "Too many collection items for collection with key '%s', maximum %s items allowed",
                 $type->getName(),
                 $type->getMax(),
-                ));
+            ));
         }
 
         // BranchType: check if value is an array
@@ -61,10 +61,10 @@ class BranchTypeValidator implements TypeValidatorInterface
             ));
         }
 
-        $ValidationErrors = DelegatingValidator::delegate($inputValue, $type->getFormats());
+        $validationErrors = DelegatingValidator::delegate($inputValue, $type->getFormats());
 
-        if ($ValidationErrors->getErrors() !== null) {
-            return new ValidationErrorResult($ValidationErrors->getErrors());
+        if ($validationErrors->getErrors() !== null) {
+            return new ValidationErrorResult($validationErrors->getErrors());
         }
 
         return new ValidationSuccessResult();

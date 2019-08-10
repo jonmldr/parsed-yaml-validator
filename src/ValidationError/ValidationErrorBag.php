@@ -11,11 +11,11 @@ class ValidationErrorBag implements IteratorAggregate, Countable
     /**
      * @var
      */
-    private $ValidationErrors = [];
+    private $validationErrors = [];
 
     public function add(ValidationError $ValidationError): self
     {
-        $this->ValidationErrors[] = $ValidationError;
+        $this->validationErrors[] = $ValidationError;
 
         return $this;
     }
@@ -23,7 +23,7 @@ class ValidationErrorBag implements IteratorAggregate, Countable
     public function addCollection(ValidationErrorBag $collection): self
     {
         foreach ($collection as $collectionItem) {
-            $this->ValidationErrors[] = $collectionItem;
+            $this->validationErrors[] = $collectionItem;
         }
 
         return $this;
@@ -31,11 +31,11 @@ class ValidationErrorBag implements IteratorAggregate, Countable
 
     public function getIterator()
     {
-        return new ArrayIterator($this->ValidationErrors);
+        return new ArrayIterator($this->validationErrors);
     }
 
     public function count()
     {
-        return count($this->ValidationErrors);
+        return count($this->validationErrors);
     }
 }

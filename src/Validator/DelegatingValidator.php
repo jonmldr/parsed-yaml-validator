@@ -8,6 +8,7 @@ use ParsedYamlValidator\Result\ValidationErrorResult;
 use ParsedYamlValidator\Result\ValidationResult;
 use ParsedYamlValidator\Result\ValidationSuccessResult;
 use ParsedYamlValidator\Type\TypeInterface;
+use ParsedYamlValidator\ValidationError\ValidationError;
 use ParsedYamlValidator\ValidationError\ValidationErrorBag;
 use ParsedYamlValidator\TypeValidator\TypeValidatorInterface;
 
@@ -15,7 +16,7 @@ class DelegatingValidator
 {
     public static function delegate(array $input, array $types): ValidationResult
     {
-        $ValidationErrors = new ValidationErrorBag();
+        $validationErrors = new ValidationErrorBag();
 
         $inputKeysToHandle = array_keys($input);
 
@@ -43,18 +44,29 @@ class DelegatingValidator
             }
 
             // Call the validator & handle the output.
-            $ValidationResult = $validator->validate($type, $inputKey, $inputValue);
+            $validationResult = $validator->validate($type, $inputKey, $inputValue);
 
-            $ValidationErrors->addCollection($ValidationResult->getErrors());
+            $validationErrors->addCollection($validationResult->getErrors());
 
             // Remove the key from the "To-do list".
-            if (array_key_exists($type->getName(), $inputKeysToHandle)) {
-                unset($inputKeysToHandle[$type->getName()]);
+            if (($key = array_search($type->getName(), $inputKeysToHandle, true)) !== false) {
+                unset($inputKeysToHandle[$key]);
             }
         }
 
-        if (count($ValidationErrors) > 0) {
-            return new ValidationErrorResult($ValidationErrors);
+        // Create errors for the undefined keys.
+        foreach ($inputKeysToHandle as $inputKey) {
+            $error = new ValidationError(sprintf(
+                "Invalid option '%s', the available options are: %s",
+                $inputKey,
+                implode(', ', array_keys($input)),
+            ));
+
+            $validationErrors->add($error);
+        }
+
+        if (count($validationErrors) > 0) {
+            return new ValidationErrorResult($validationErrors);
         }
 
         return new ValidationSuccessResult();
