@@ -18,14 +18,12 @@ class DelegatingValidator
     {
         $validationErrors = new ValidationErrorBag();
 
-        $inputKeysToHandle = array_keys($input);
-
         $availableKeys = array_map(function (TypeInterface $type) {
             return $type->getName();
         }, $types);
 
         // Create errors for the undefined keys.
-        foreach ($inputKeysToHandle as $key) {
+        foreach (array_keys($input) as $key) {
             if (in_array($key, $availableKeys, true) === false) {
                 $error = new ValidationError(sprintf(
                     "Invalid option '%s', the available options are: %s",
@@ -65,11 +63,6 @@ class DelegatingValidator
             $validationResult = $validator->validate($type, $inputKey, $inputValue);
 
             $validationErrors->addCollection($validationResult->getErrors());
-
-            // Remove the key from the "To-do list".
-            if (($key = array_search($type->getName(), $inputKeysToHandle, true)) !== false) {
-                unset($inputKeysToHandle[$key]);
-            }
         }
 
         if (count($validationErrors) > 0) {
