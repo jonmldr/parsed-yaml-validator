@@ -34,28 +34,6 @@ class BranchTypeValidator implements TypeValidatorInterface
             return new ValidationResult(true);
         }
 
-        // min()
-        $min = $type->getMin();
-
-        if ($min !== null && count($type->getFormats()) < $min) {
-            return new ValidationResult(false, sprintf(
-                "Too few collection items for collection with key '%s', minimal %s items required",
-                $type->getName(),
-                $type->getMin(),
-            ));
-        }
-
-        // max()
-        $max = $type->getMax();
-
-        if ($max !== null && count($type->getFormats()) > $max) {
-            return new ValidationResult(false, sprintf(
-                "Too many collection items for collection with key '%s', maximum %s items allowed",
-                $type->getName(),
-                $type->getMax(),
-            ));
-        }
-
         // BranchType: check if value is an array
         if (is_array($inputValue) === false) {
             return new ValidationResult(false, sprintf(

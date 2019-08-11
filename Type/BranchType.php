@@ -22,16 +22,6 @@ class BranchType implements TypeInterface
     private $description;
 
     /**
-     * @var int|null
-     */
-    private $min;
-
-    /**
-     * @var int|null
-     */
-    private $max;
-
-    /**
      * @var bool
      */
     private $required = false;
@@ -45,20 +35,6 @@ class BranchType implements TypeInterface
     public function description(string $description): self
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    public function min(int $min): self
-    {
-        $this->min = $min;
-
-        return $this;
-    }
-
-    public function max(int $max): self
-    {
-        $this->max = $max;
 
         return $this;
     }
@@ -83,16 +59,6 @@ class BranchType implements TypeInterface
     public function getDescription(): ?string
     {
         return $this->description;
-    }
-
-    public function getMin(): ?int
-    {
-        return $this->min;
-    }
-
-    public function getMax(): ?int
-    {
-        return $this->max;
     }
 
     public function isRequired(): bool

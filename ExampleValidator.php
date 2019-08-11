@@ -68,7 +68,6 @@ class ExampleValidator extends AbstractValidator implements ValidatorInterface
                     $this->boolean('autowire'),
                 ])
                 ->description('describes an service definition')
-                ->min(1)
                 ->required(),
 
             $this
