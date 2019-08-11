@@ -174,14 +174,6 @@ Run the unit tests by executing the following command:
 ./vendor/bin/phpunit tests/ --colors=auto
 ````
 
-## ToDo list
-- `StrategyType` / `StrategyTypeValidator`
-- Moving ValidationType logic to universal `Assert` classes (required, notEmpty, min ect.)
-- Unit tests for `DelegatingValidator`, `ValidationResult` & validator instances
-- `min()` & `max()` for `DecimalType`, `IntegerType` & `StringType`
-- `regex()` for `StringType`
-- Publish @ Packagist
-
 ## Php CS Fixer
 ````
 ./vendor/bin/php-cs-fixer fix
