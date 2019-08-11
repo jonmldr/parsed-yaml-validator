@@ -1,6 +1,7 @@
 <?php
 
-use ParsedYamlValidator\ExampleValidator;
+namespace ParsedYamlValidator;
+
 use Symfony\Component\Yaml\Yaml;
 
 include 'vendor/autoload.php';
