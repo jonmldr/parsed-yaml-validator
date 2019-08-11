@@ -16,7 +16,7 @@ class ExampleValidator extends AbstractValidator implements ValidatorInterface
     public function describe(): array
     {
         return [
-            // describe your config file here
+            // describe your yaml file here
         ];
     }
 }
