@@ -5,7 +5,7 @@ namespace ParsedYamlValidator\TypeValidator;
 use ParsedYamlValidator\Exception\InvalidTypeException;
 use ParsedYamlValidator\Type\StrategyType;
 use ParsedYamlValidator\Type\TypeInterface;
-use ParsedYamlValidator\Result\ValidationResult;
+use ParsedYamlValidator\ValidationResult\ValidationResult;
 
 class StrategyTypeValidator implements TypeValidatorInterface
 {

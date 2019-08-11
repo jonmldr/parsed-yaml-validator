@@ -1,6 +1,6 @@
 <?php
 
-namespace ParsedYamlValidator\Result;
+namespace ParsedYamlValidator\ValidationResult;
 
 use ParsedYamlValidator\Exception\InvalidTypeException;
 use ParsedYamlValidator\ValidationError\ValidationError;

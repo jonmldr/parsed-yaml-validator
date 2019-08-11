@@ -5,7 +5,7 @@ namespace ParsedYamlValidator\TypeValidator;
 use ParsedYamlValidator\Exception\InvalidTypeException;
 use ParsedYamlValidator\Type\BooleanType;
 use ParsedYamlValidator\Type\TypeInterface;
-use ParsedYamlValidator\Result\ValidationResult;
+use ParsedYamlValidator\ValidationResult\ValidationResult;
 
 class BooleanTypeValidator implements TypeValidatorInterface
 {

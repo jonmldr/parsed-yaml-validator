@@ -5,7 +5,7 @@ namespace ParsedYamlValidator\TypeValidator;
 use ParsedYamlValidator\Exception\InvalidTypeException;
 use ParsedYamlValidator\Type\StringType;
 use ParsedYamlValidator\Type\TypeInterface;
-use ParsedYamlValidator\Result\ValidationResult;
+use ParsedYamlValidator\ValidationResult\ValidationResult;
 
 class StringTypeValidator implements TypeValidatorInterface
 {

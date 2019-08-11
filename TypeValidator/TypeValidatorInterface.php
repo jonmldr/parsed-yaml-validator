@@ -2,7 +2,7 @@
 
 namespace ParsedYamlValidator\TypeValidator;
 
-use ParsedYamlValidator\Result\ValidationResult;
+use ParsedYamlValidator\ValidationResult\ValidationResult;
 use ParsedYamlValidator\Type\TypeInterface;
 
 interface TypeValidatorInterface

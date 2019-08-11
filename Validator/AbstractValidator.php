@@ -2,7 +2,7 @@
 
 namespace ParsedYamlValidator\Validator;
 
-use ParsedYamlValidator\Result\ValidationResult;
+use ParsedYamlValidator\ValidationResult\ValidationResult;
 use ParsedYamlValidator\Type\BooleanType;
 use ParsedYamlValidator\Type\BranchType;
 use ParsedYamlValidator\Type\CollectionType;
