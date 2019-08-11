@@ -6,7 +6,7 @@ use ParsedYamlValidator\Exception\InvalidTypeException;
 use ParsedYamlValidator\Type\BooleanType;
 use ParsedYamlValidator\Type\CollectionType;
 use ParsedYamlValidator\Type\TypeInterface;
-use ParsedYamlValidator\ValidationResult\ValidationResult;
+use ParsedYamlValidator\Validator\ValidationResult;
 
 class CollectionTypeValidator implements TypeValidatorInterface
 {

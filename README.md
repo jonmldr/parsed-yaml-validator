@@ -31,12 +31,20 @@ $result = $validator->validate($content);
 ````
 
 
-## ValidationResult
+## Validation result
+The `validate()` method will return an instance of the `ParsedYamlValidator\Validator\ValidationResult`.
+- `isValid()`: Returns `true` if the input is valid, otherwise it will return `false`
+- `getErrors()`: Provides an `ValidationErrorBag` with one or multiple instances of `ValidationError` if the input is invalid.
 
-## Tests
-Run the unit tests by executing the following command:
-````
-./vendor/bin/phpunit tests/ --colors=auto
+Example:
+````PHP
+$result = $validator->validate($content);
+
+if ($result->isValid() === false) {
+    foreach ($result->getErrors() as $error) {
+        echo sprintf('<pre>%s</pre>', (string) $error);
+    }
+}
 ````
 
 ## Data types
@@ -124,6 +132,12 @@ $this->string('username');
 - `notEmpty()`
 - `required()`
 
+
+## Tests
+Run the unit tests by executing the following command:
+````
+./vendor/bin/phpunit tests/ --colors=auto
+````
 
 ## Php CS Fixer
 ````

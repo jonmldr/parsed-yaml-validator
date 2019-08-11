@@ -5,7 +5,7 @@ namespace ParsedYamlValidator\TypeValidator;
 use ParsedYamlValidator\Exception\InvalidTypeValidatorException;
 use ParsedYamlValidator\Validator\DelegatingValidator;
 use ParsedYamlValidator\Exception\InvalidTypeException;
-use ParsedYamlValidator\ValidationResult\ValidationResult;
+use ParsedYamlValidator\Validator\ValidationResult;
 use ParsedYamlValidator\Type\BranchType;
 use ParsedYamlValidator\Type\TypeInterface;
 

@@ -26,7 +26,7 @@ class ExampleValidator extends AbstractValidator implements ValidatorInterface
                 ->required(),
 
             $this
-                ->string('testString')
+                ->string('testString2')
                 ->notEmpty()
                 ->required(),
 
@@ -35,7 +35,7 @@ class ExampleValidator extends AbstractValidator implements ValidatorInterface
                 ->required(),
 
             $this
-                ->integer('testInteger')
+                ->integer('testInteger2')
                 ->required(),
 
             $this
@@ -47,7 +47,7 @@ class ExampleValidator extends AbstractValidator implements ValidatorInterface
                     self::TYPE_BOOL,
                     self::TYPE_DECIMAL,
                 ])
-                ->min(2)
+                ->min(100)
                 ->max(8)
                 ->required(),
 

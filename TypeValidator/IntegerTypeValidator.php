@@ -3,7 +3,7 @@
 namespace ParsedYamlValidator\TypeValidator;
 
 use ParsedYamlValidator\Exception\InvalidTypeException;
-use ParsedYamlValidator\ValidationResult\ValidationResult;
+use ParsedYamlValidator\Validator\ValidationResult;
 use ParsedYamlValidator\Type\IntegerType;
 use ParsedYamlValidator\Type\TypeInterface;
 
