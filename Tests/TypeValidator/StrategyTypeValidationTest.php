@@ -8,5 +8,8 @@ use PHPUnit\Framework\TestCase;
 
 class StrategyTypeValidationTest extends TestCase
 {
-    //@TODO
+    public function testTest(): void
+    {
+        $this->assertTrue(true);
+    }
 }

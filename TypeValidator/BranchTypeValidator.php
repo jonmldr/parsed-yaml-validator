@@ -2,6 +2,7 @@
 
 namespace ParsedYamlValidator\TypeValidator;
 
+use ParsedYamlValidator\Exception\InvalidTypeValidatorException;
 use ParsedYamlValidator\Validator\DelegatingValidator;
 use ParsedYamlValidator\Exception\InvalidTypeException;
 use ParsedYamlValidator\Result\ValidationResult;
@@ -13,7 +14,12 @@ class BranchTypeValidator implements TypeValidatorInterface
     public function validate(TypeInterface $type, $inputKey, $inputValue): ValidationResult
     {
         if (!$type instanceof BranchType) {
-            throw new InvalidTypeException(sprintf("Expected type of instance '%s', instance of '%s' given.", BooleanType::class, get_class($type)));
+            throw new InvalidTypeException(sprintf("Expected type of instance '%s', instance of '%s' given.", BranchType::class, get_class($type)));
+        }
+
+        // minimal one child
+        if ($type !== null && count($type->getFormats()) < 1) {
+            throw new InvalidTypeValidatorException('Minimal one child has to be defined for a BranchType');
         }
 
         // require()
