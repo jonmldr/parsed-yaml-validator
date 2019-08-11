@@ -7,6 +7,19 @@ In this way you can process the data without having to manually validate the dat
 Your validator must extend the `ParsedYamlValidator\Validator\AbstractValidator`
 and implement the `ParsedYamlValidator\Validator\ValidatorInterface`.
 
+#### Example
+````yaml
+programmers:
+  name: 'John Doe'
+  age: 20
+  height: 1.71
+  lead_developer: true
+  programming_languages:
+    - 'C#'
+    - 'PHP'
+    - 'Javascript'
+````
+
 ````PHP
 use ParsedYamlValidator\Validator\AbstractValidator;
 use ParsedYamlValidator\Validator\ValidatorInterface;
