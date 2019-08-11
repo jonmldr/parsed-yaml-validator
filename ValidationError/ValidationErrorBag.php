@@ -9,7 +9,7 @@ use IteratorAggregate;
 class ValidationErrorBag implements IteratorAggregate, Countable
 {
     /**
-     * @var
+     * @var ValidationError[]|array
      */
     private $validationErrors = [];
 
@@ -27,6 +27,15 @@ class ValidationErrorBag implements IteratorAggregate, Countable
         }
 
         return $this;
+    }
+
+    public function first(): ?ValidationError
+    {
+        if (isset($this->validationErrors[0]) === true) {
+            return $this->validationErrors[0];
+        }
+
+        return null;
     }
 
     public function getIterator()

@@ -60,15 +60,17 @@ class CollectionTypeValidator implements TypeValidatorInterface
         }
 
         // types() && type()
-        foreach ($inputValue as $collectionItem) {
-            $collectionItemType = gettype($collectionItem);
+        if (count($type->getTypes()) > 0) {
+            foreach ($inputValue as $collectionItem) {
+                $collectionItemType = gettype($collectionItem);
 
-            if (in_array($collectionItemType, $type->getTypes(), true) === false) {
-                return new ValidationResult(false, sprintf(
-                    'Invalid collection type %s, expected %s',
-                    $collectionItemType,
-                    implode(', ', $type->getTypes()),
-                ));
+                if (in_array($collectionItemType, $type->getTypes(), true) === false) {
+                    return new ValidationResult(false, sprintf(
+                        'Invalid collection type %s, expected %s',
+                        $collectionItemType,
+                        implode(', ', $type->getTypes()),
+                    ));
+                }
             }
         }
 

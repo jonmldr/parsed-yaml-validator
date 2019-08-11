@@ -37,7 +37,7 @@ class StringTypeValidator implements TypeValidatorInterface
         }
 
         // notEmpty()
-        if (empty($inputValue) === true && $type->isNotEmpty() === true) {
+        if (empty(trim($inputValue)) === true && $type->isNotEmpty() === true) {
             return new ValidationResult(false, sprintf(
                 "String with key '%s' is has an empty value",
                 $inputKey,
