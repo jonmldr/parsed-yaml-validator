@@ -45,7 +45,7 @@ class BranchTypeValidator implements TypeValidatorInterface
 
         $validationErrors = DelegatingValidator::delegate($inputValue, $type->getFormats());
 
-        if ($validationErrors->getErrors() !== null) {
+        if (count($validationErrors->getErrors()) > 0) {
             return new ValidationResult(false, $validationErrors->getErrors());
         }
 
