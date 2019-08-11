@@ -1,7 +1,7 @@
 # Parsed yaml validator
 
-This library provides an easy-to-read, developer-friendly validator to validate your parsed yaml config files.
-In this way you can handle the data without having to manually validate the data.
+This library provides the opportunity to create easy-to-read, developer-friendly validators to validate your parsed yaml config files.
+In this way you can process the data without having to manually validate the data.
 
 ## Create your validator
 Your validator must extend the `ParsedYamlValidator\Validator\AbstractValidator`
@@ -143,3 +143,7 @@ Run the unit tests by executing the following command:
 ````
 ./vendor/bin/php-cs-fixer fix
 ````
+
+## Links
+- [Symfony's Yaml Component](https://symfony.com/doc/current/components/yaml.html)
+- [PHP's yaml_parse() function](https://www.php.net/manual/en/function.yaml-parse.php)
