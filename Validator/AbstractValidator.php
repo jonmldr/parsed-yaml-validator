@@ -2,6 +2,8 @@
 
 namespace ParsedYamlValidator\Validator;
 
+use ParsedYamlValidator\Exception\InvalidTypeException;
+use ParsedYamlValidator\Type\TypeInterface;
 use ParsedYamlValidator\Validator\ValidationResult;
 use ParsedYamlValidator\Type\BooleanType;
 use ParsedYamlValidator\Type\BranchType;
@@ -30,14 +32,6 @@ abstract class AbstractValidator
     public function validate(array $input): ValidationResult
     {
         return DelegatingValidator::delegate($input, $this->describe());
-    }
-
-    /**
-     * This function will be overwritten by the class which extends this AbstractValidator.
-     */
-    public function describe(): array
-    {
-        return [];
     }
 
     protected function boolean(string $name): BooleanType

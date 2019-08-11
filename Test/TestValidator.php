@@ -1,11 +1,11 @@
 <?php
 
-namespace ParsedYamlValidator;
+namespace ParsedYamlValidator\Test;
 
 use ParsedYamlValidator\Validator\AbstractValidator;
 use ParsedYamlValidator\Validator\ValidatorInterface;
 
-class ExampleValidator extends AbstractValidator implements ValidatorInterface
+class TestValidator extends AbstractValidator implements ValidatorInterface
 {
     public function describe(): array
     {
