@@ -27,7 +27,7 @@ class IntegerTypeValidator implements TypeValidatorInterface
             return new ValidationResult(true);
         }
 
-        // DecimalType: check if value is a decimal
+        // IntegerType: check if value is a decimal
         if (is_int($inputValue) === false) {
             return new ValidationResult(false, sprintf(
                 "Value with key '%s' must be a integer, %s given",
