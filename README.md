@@ -22,6 +22,23 @@ class ExampleValidator extends AbstractValidator implements ValidatorInterface
 }
 ````
 
+You can call your validator in the following way:
+````PHP
+$content = // parsed yaml data
+
+$validator = new ExampleValidator();
+$result = $validator->validate($content);
+````
+
+
+## ValidationResult
+
+## Tests
+Run the unit tests by executing the following command:
+````
+./vendor/bin/phpunit tests/ --colors=auto
+````
+
 ## Data types
 
 ### BooleanType
@@ -108,13 +125,7 @@ $this->string('username');
 - `required()`
 
 
-## Tests
-Run the unit tests by executing the following command:
-````
-./vendor/bin/phpunit tests/ --colors=auto
-````
-
-## Php cs fixer
+## Php CS Fixer
 ````
 ./vendor/bin/php-cs-fixer fix
 ````
