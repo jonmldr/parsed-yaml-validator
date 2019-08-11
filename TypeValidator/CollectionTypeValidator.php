@@ -6,9 +6,7 @@ use ParsedYamlValidator\Exception\InvalidTypeException;
 use ParsedYamlValidator\Type\BooleanType;
 use ParsedYamlValidator\Type\CollectionType;
 use ParsedYamlValidator\Type\TypeInterface;
-use ParsedYamlValidator\Result\ValidationErrorResult;
 use ParsedYamlValidator\Result\ValidationResult;
-use ParsedYamlValidator\Result\ValidationSuccessResult;
 
 class CollectionTypeValidator implements TypeValidatorInterface
 {
@@ -21,18 +19,18 @@ class CollectionTypeValidator implements TypeValidatorInterface
         // require()
         if ($inputKey === null || $inputValue === null) {
             if ($type->isRequired() === true) {
-                return new ValidationErrorResult(sprintf(
+                return new ValidationResult(false, sprintf(
                     "Collection with key '%s' is required but does not exists",
                     $type->getName(),
                 ));
             }
 
-            return new ValidationSuccessResult();
+            return new ValidationResult(true);
         }
 
         // CollectionType: check if value is an array
         if (is_array($inputValue) === false) {
-            return new ValidationErrorResult(sprintf(
+            return new ValidationResult(false, sprintf(
                 "Value with key '%s' must be a collection, %s given",
                 $type->getName(),
                 gettype($inputValue),
@@ -43,7 +41,7 @@ class CollectionTypeValidator implements TypeValidatorInterface
         $min = $type->getMin();
 
         if ($min !== null && count($inputValue) < $min) {
-            return new ValidationErrorResult(sprintf(
+            return new ValidationResult(false, sprintf(
                 "Too few collection items for collection with key '%s', minimal %s items required",
                 $type->getName(),
                 $type->getMin(),
@@ -54,7 +52,7 @@ class CollectionTypeValidator implements TypeValidatorInterface
         $max = $type->getMax();
 
         if ($max !== null && count($inputValue) > $max) {
-            return new ValidationErrorResult(sprintf(
+            return new ValidationResult(false, sprintf(
                 "Too many collection items for collection with key '%s', maximum %s items allowed",
                 $type->getName(),
                 $type->getMax(),
@@ -66,7 +64,7 @@ class CollectionTypeValidator implements TypeValidatorInterface
             $collectionItemType = gettype($collectionItem);
 
             if (in_array($collectionItemType, $type->getTypes(), true) === false) {
-                return new ValidationErrorResult(sprintf(
+                return new ValidationResult(false, sprintf(
                     'Invalid collection type %s, expected %s',
                     $collectionItemType,
                     implode(', ', $type->getTypes()),
@@ -74,6 +72,6 @@ class CollectionTypeValidator implements TypeValidatorInterface
             }
         }
 
-        return new ValidationSuccessResult();
+        return new ValidationResult(true);
     }
 }

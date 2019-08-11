@@ -6,7 +6,6 @@ use ParsedYamlValidator\Exception\InvalidTypeException;
 use ParsedYamlValidator\Type\StrategyType;
 use ParsedYamlValidator\Type\TypeInterface;
 use ParsedYamlValidator\Result\ValidationResult;
-use ParsedYamlValidator\Result\ValidationSuccessResult;
 
 class StrategyTypeValidator implements TypeValidatorInterface
 {
@@ -17,6 +16,6 @@ class StrategyTypeValidator implements TypeValidatorInterface
         }
 
         // @TODO
-        return new ValidationSuccessResult();
+        return new ValidationResult(true);
     }
 }

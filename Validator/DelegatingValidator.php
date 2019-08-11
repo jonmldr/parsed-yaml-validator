@@ -4,9 +4,7 @@ namespace ParsedYamlValidator\Validator;
 
 use ParsedYamlValidator\Exception\InvalidTypeException;
 use ParsedYamlValidator\Exception\InvalidTypeValidatorException;
-use ParsedYamlValidator\Result\ValidationErrorResult;
 use ParsedYamlValidator\Result\ValidationResult;
-use ParsedYamlValidator\Result\ValidationSuccessResult;
 use ParsedYamlValidator\Type\TypeInterface;
 use ParsedYamlValidator\ValidationError\ValidationError;
 use ParsedYamlValidator\ValidationError\ValidationErrorBag;
@@ -66,9 +64,9 @@ class DelegatingValidator
         }
 
         if (count($validationErrors) > 0) {
-            return new ValidationErrorResult($validationErrors);
+            return new ValidationResult(false, $validationErrors);
         }
 
-        return new ValidationSuccessResult();
+        return new ValidationResult(true);
     }
 }

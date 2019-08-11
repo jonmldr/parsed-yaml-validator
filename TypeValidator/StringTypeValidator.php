@@ -3,11 +3,9 @@
 namespace ParsedYamlValidator\TypeValidator;
 
 use ParsedYamlValidator\Exception\InvalidTypeException;
-use ParsedYamlValidator\Result\ValidationErrorResult;
 use ParsedYamlValidator\Type\StringType;
 use ParsedYamlValidator\Type\TypeInterface;
 use ParsedYamlValidator\Result\ValidationResult;
-use ParsedYamlValidator\Result\ValidationSuccessResult;
 
 class StringTypeValidator implements TypeValidatorInterface
 {
@@ -20,18 +18,18 @@ class StringTypeValidator implements TypeValidatorInterface
         // require()
         if ($inputKey === null || $inputValue === null) {
             if ($type->isRequired() === true) {
-                return new ValidationErrorResult(sprintf(
+                return new ValidationResult(false, sprintf(
                     "String with key '%s' is required but does not exists",
                     $type->getName(),
                 ));
             }
 
-            return new ValidationSuccessResult();
+            return new ValidationResult(true);
         }
 
         // StringType: check if value is a string
         if (is_string($inputValue) === false) {
-            return new ValidationErrorResult(sprintf(
+            return new ValidationResult(false, sprintf(
                 "Value with key '%s' must be a string, %s given",
                 $type->getName(),
                 gettype($inputValue),
@@ -40,12 +38,12 @@ class StringTypeValidator implements TypeValidatorInterface
 
         // notEmpty()
         if (empty($inputValue) === true && $type->isNotEmpty() === true) {
-            return new ValidationErrorResult(sprintf(
+            return new ValidationResult(false, sprintf(
                 "String with key '%s' is has an empty value",
                 $inputKey,
             ));
         }
 
-        return new ValidationSuccessResult();
+        return new ValidationResult(true);
     }
 }

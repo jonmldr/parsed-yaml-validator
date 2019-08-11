@@ -6,7 +6,7 @@ use ParsedYamlValidator\Exception\InvalidTypeException;
 use ParsedYamlValidator\ValidationError\ValidationError;
 use ParsedYamlValidator\ValidationError\ValidationErrorBag;
 
-abstract class ValidationResult
+class ValidationResult
 {
     /**
      * @var bool
