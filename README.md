@@ -7,7 +7,7 @@ In this way you can process the data without having to manually validate the dat
 Your validator must extend the `ParsedYamlValidator\Validator\AbstractValidator`
 and implement the `ParsedYamlValidator\Validator\ValidatorInterface`.
 
-#### Example
+#### Example:
 ````yaml
 programmers:
   name: 'John Doe'
@@ -173,6 +173,14 @@ Run the unit tests by executing the following command:
 ````
 ./vendor/bin/phpunit tests/ --colors=auto
 ````
+
+## ToDo list
+- `StrategyType` / `StrategyTypeValidator`
+- Moving ValidationType logic to universal `Assert` classes (required, notEmpty, min ect.)
+- Unit tests for `DelegatingValidator`, `ValidationResult` & validator instances
+- `min()` & `max()` for `DecimalType`, `IntegerType` & `StringType`
+- `regex()` for `StringType`
+- Publish @ Packagist
 
 ## Php CS Fixer
 ````
