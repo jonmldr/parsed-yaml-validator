@@ -42,8 +42,6 @@ class ValidationResult
         if (is_array($errors) === true) {
             foreach ($errors as $message) {
                 $this->errors->add(new ValidationError($message));
-
-                return;
             }
         }
 
