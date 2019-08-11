@@ -56,7 +56,7 @@ The BooleanType represents a boolean.
 $this->boolean('isAdmin');
 ````
 
-#### Options
+#### Options:
 - `required()`
 
 ### BranchType
@@ -83,14 +83,14 @@ $this
     ->type(self::TYPE_INTEGER);
 ````
 
-#### Options
+#### Options:
 - `type()`
 - `types()`
 - `min()`
 - `max()`
 - `required()`
 
-#### Available data options
+#### Available data options:
 - `self::TYPE_BOOL`
 - `self::TYPE_DECIMAL`
 - `self::TYPE_INTEGER`
@@ -103,7 +103,7 @@ The DecimalType represents an float/double.
 $this->decimal('length');
 ````
 
-#### Options
+#### Options:
 - `required()`
 
 ### IntegerType
@@ -113,7 +113,7 @@ The IntegerType represents an integer.
 $this->integer('age');
 ````
 
-#### Options
+#### Options:
 - `required()`
 
 ### StrategyType
@@ -128,7 +128,7 @@ The IntegerType represents an string.
 $this->string('username');
 ````
 
-#### Options
+#### Options:
 - `notEmpty()`
 - `required()`
 
