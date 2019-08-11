@@ -1,6 +1,6 @@
 # Parsed yaml validator
 
-This library provides an easy-to-use validator to validate your parsed yaml config files.
+This library provides an easy-to-read, developer-friendly validator to validate your parsed yaml config files.
 In this way you can handle the data without having to manually validate the data.
 
 ## Create your validator
