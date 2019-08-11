@@ -48,16 +48,16 @@ class CollectionType implements TypeInterface
         return $this;
     }
 
-    public function types(array $types): self
+    public function type(string $type): self
     {
-        $this->types = $types;
+        $this->types[] = $type;
 
         return $this;
     }
 
-    public function type(string $type): self
+    public function types(array $types): self
     {
-        $this->types[] = $type;
+        $this->types = $types;
 
         return $this;
     }
